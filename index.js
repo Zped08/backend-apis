@@ -34,6 +34,10 @@ app.use(express.json())
 app.use(requestLogger)
 app.use(express.static('build'))
 
+app.get('/', (request, response) => {
+  response.send('<h1>Hello world</h1>')
+})
+
 app.get('/api/notes', (request, response) => {
   Note.find({}).then(notes => {
     response.json(notes)
